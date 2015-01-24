@@ -4,8 +4,10 @@ using System.Collections;
 
 public class KeyboardForButton : MonoBehaviour {
 
+	public KeyCode keyCode;
+
 	[SerializeField]
-	KeyCode keyCode;
+	Image buttonImage;
 
 	Button button;
 
@@ -22,6 +24,10 @@ public class KeyboardForButton : MonoBehaviour {
 	public void ButtonClick()
 	{
 		Debug.Log ("Button click went through: " + name);
+	}
+
+	IEnumerator DimButton(){
+		yield return null;
 	}
 
 }

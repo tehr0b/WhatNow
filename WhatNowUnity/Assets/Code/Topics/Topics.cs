@@ -4,13 +4,54 @@ using System.Collections.Generic;
 public enum TopicName
 {
 	NOTHING,
-	VIDEOGAMES,
-	CARS,
-	MAKEUP,
-	CLOTHES,
-	MARKLAR,
-	OUTERSPACE,
-	MILK,
+	Cooking,
+	Fish,
+	Volleyball,
+	Clothes,
+	Bugs,
+	Drinking,
+	Internet,
+	Shopping,
+	Teacup,
+	Motorcycles,
+	Lollipop,
+	Hats,
+	Gaming,
+	Eating,
+	Basketball,
+	Cars,
+	Leaf,
+	Book,
+	Biking,
+	Cats,
+	Hiking,
+	Computers,
+	Movies,
+	Tennis,
+	Coffee,
+	TV,
+	Microscope,
+	Shoes,
+	Milk,
+	Teapot,
+	Weather,
+	Painting,
+	Undershirts,
+	Dresses,
+	Raddish,
+	Photography,
+	Heels,
+	Music,
+	AtomicPower,
+	Planes,
+	Sunsets,
+	Lighthouse,
+	Ironing,
+	Waves,
+	Smoking,
+	Books,
+	Recycling,
+	Gender,
 	MAX //Not an actual topic, just used for iteration count
 }
 
@@ -21,69 +62,69 @@ public class TopicSet {
 	public TopicSet() {
 		allTopics = new List<Topic> ();
 
-		Topic videoGames = new Topic (TopicName.VIDEOGAMES);
-		Topic cars = new Topic (TopicName.CARS);
-		Topic makeup = new Topic (TopicName.MAKEUP);
-		Topic clothes = new Topic (TopicName.CLOTHES);
-		Topic marklar = new Topic (TopicName.MARKLAR);
-		Topic outerSpace = new Topic (TopicName.OUTERSPACE);
-		Topic milk = new Topic (TopicName.MILK);
+		Topic videoGames = new Topic (TopicName.Gaming);
+		Topic cars = new Topic (TopicName.Cars);
+		Topic motorcycles = new Topic (TopicName.Motorcycles);
+		Topic clothes = new Topic (TopicName.Clothes);
+		Topic marklar = new Topic (TopicName.Gender);
+		Topic microscope = new Topic (TopicName.Microscope);
+		Topic milk = new Topic (TopicName.Milk);
 
 		videoGames.AddTopic (cars);
-		videoGames.AddTopic (makeup);
+		videoGames.AddTopic (motorcycles);
 		videoGames.AddTopic (clothes);
 		videoGames.AddTopic (marklar);
-		videoGames.AddTopic (outerSpace);
+		videoGames.AddTopic (microscope);
 		videoGames.AddTopic (milk);
 
 		cars.AddTopic (videoGames);
-		cars.AddTopic (makeup);
+		cars.AddTopic (motorcycles);
 		cars.AddTopic (clothes);
 		cars.AddTopic (marklar);
-		cars.AddTopic (outerSpace);
+		cars.AddTopic (microscope);
 		cars.AddTopic (milk);
 
-		makeup.AddTopic (videoGames);
-		makeup.AddTopic (cars);
-		makeup.AddTopic (clothes);
-		makeup.AddTopic (marklar);
-		makeup.AddTopic (outerSpace);
-		makeup.AddTopic (milk);
+		motorcycles.AddTopic (videoGames);
+		motorcycles.AddTopic (cars);
+		motorcycles.AddTopic (clothes);
+		motorcycles.AddTopic (marklar);
+		motorcycles.AddTopic (microscope);
+		motorcycles.AddTopic (milk);
 
 		clothes.AddTopic (videoGames);
 		clothes.AddTopic (cars);
-		clothes.AddTopic (makeup);
+		clothes.AddTopic (motorcycles);
 		clothes.AddTopic (marklar);
-		clothes.AddTopic (outerSpace);
+		clothes.AddTopic (microscope);
 		clothes.AddTopic (milk);
 
 		marklar.AddTopic (videoGames);
 		marklar.AddTopic (cars);
-		marklar.AddTopic (makeup);
+		marklar.AddTopic (motorcycles);
 		marklar.AddTopic (clothes);
-		marklar.AddTopic (outerSpace);
+		marklar.AddTopic (microscope);
 		marklar.AddTopic (milk);
 
-		outerSpace.AddTopic (videoGames);
-		outerSpace.AddTopic (cars);
-		outerSpace.AddTopic (makeup);
-		outerSpace.AddTopic (clothes);
-		outerSpace.AddTopic (marklar);
-		outerSpace.AddTopic (milk);
+		microscope.AddTopic (videoGames);
+		microscope.AddTopic (cars);
+		microscope.AddTopic (motorcycles);
+		microscope.AddTopic (clothes);
+		microscope.AddTopic (marklar);
+		microscope.AddTopic (milk);
 
 		milk.AddTopic (videoGames);
 		milk.AddTopic (cars);
-		milk.AddTopic (makeup);
+		milk.AddTopic (motorcycles);
 		milk.AddTopic (clothes);
 		milk.AddTopic (marklar);
-		milk.AddTopic (outerSpace);
+		milk.AddTopic (microscope);
 
 		allTopics.Add (videoGames);
 		allTopics.Add (cars);
-		allTopics.Add (makeup);
+		allTopics.Add (motorcycles);
 		allTopics.Add (clothes);
 		allTopics.Add (marklar);
-		allTopics.Add (outerSpace);
+		allTopics.Add (microscope);
 		allTopics.Add (milk);
 	}
 
