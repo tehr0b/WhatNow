@@ -21,6 +21,8 @@ public class BarSlider : MonoBehaviour {
 
 	public float moveSpeed;
 	public int direction = 1;
+
+	bool hasHitThisPass = false;
 	
 	// Update is called once per frame
 	void Update () {
@@ -33,9 +35,13 @@ public class BarSlider : MonoBehaviour {
 				transform.localPosition.y,
 				transform.localPosition.z);
 			direction *= -1;
+
+			if (!hasHitThisPass) {
+
+			}
 		}
 
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (!hasHitThisPass && Input.GetKeyDown (KeyCode.Space)) {
 			Debug.Log(transform.localPosition.x + ", " + limit + ", " + bar.fill);
 			if (Mathf.Abs(transform.localPosition.x) < limit * bar.fill) {
 				Debug.Log("Hit!");
@@ -44,4 +50,6 @@ public class BarSlider : MonoBehaviour {
 			}
 		}
 	}
+
+		
 }

@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Topics
 {
 	class TopicSet {
 		private List<Topic> allTopics;
-		static Random rnd = new Random();
 
 		public TopicSet() {
 			allTopics = new List<Topic> ();
@@ -49,7 +49,7 @@ namespace Topics
 		}
 
 		public Topic getStartingTopic() {
-			return allTopics [rnd.Next (allTopics.Count)];
+			return allTopics [UnityEngine.Random.Range(0,allTopics.Count)];
 		}
 	}
 
