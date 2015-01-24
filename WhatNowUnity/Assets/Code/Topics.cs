@@ -75,7 +75,7 @@ class TopicSet {
 		allTopics.Add (milk);
 	}
 
-	public Topic getStartingTopic() {
+	public Topic GetStartingTopic() {
 		return allTopics [rnd.Next (allTopics.Count)];
 	}
 
@@ -103,7 +103,7 @@ class Topic
 	private String topicName;
 	private Random rnd = new Random();
 
-	public List<Topic> getPossibleTopics() {
+	public List<Topic> GetPossibleTopics() {
 		Console.WriteLine ("Getting Possible Topics");
 		return GetNRandomTopics (4);
 	}
@@ -130,11 +130,11 @@ class Topic
 		relatedTopics = new List<Topic> ();
 	}
 
-	public void addTopic(Topic topic) {
+	public void AddTopic(Topic topic) {
 		relatedTopics.Add (topic);
 	}
 
-	public String getTopicName() {
+	public String GetTopicName() {
 		return topicName;
 	}
 }
