@@ -1,21 +1,33 @@
 using System;
 using System.Collections.Generic;
 
+public enum TopicName
+{
+	NOTHING,
+	VIDEOGAMES,
+	CARS,
+	MAKEUP,
+	CLOTHES,
+	MARKLAR,
+	OUTERSPACE,
+	MILK,
+	MAX //Not an actual topic, just used for iteration count
+}
 
-class TopicSet {
+public class TopicSet {
 	private List<Topic> allTopics;
 	private Random rnd = new Random();
 
 	public TopicSet() {
 		allTopics = new List<Topic> ();
 
-		Topic videoGames = new Topic ("Video Games");
-		Topic cars = new Topic ("Cars");
-		Topic makeup = new Topic ("Makeup");
-		Topic clothes = new Topic ("Clothes");
-		Topic marklar = new Topic ("Marklar");
-		Topic outerSpace = new Topic ("Outer Space");
-		Topic milk = new Topic ("Milk");
+		Topic videoGames = new Topic (TopicName.VIDEOGAMES);
+		Topic cars = new Topic (TopicName.CARS);
+		Topic makeup = new Topic (TopicName.MAKEUP);
+		Topic clothes = new Topic (TopicName.CLOTHES);
+		Topic marklar = new Topic (TopicName.MARKLAR);
+		Topic outerSpace = new Topic (TopicName.OUTERSPACE);
+		Topic milk = new Topic (TopicName.MILK);
 
 		videoGames.AddTopic (cars);
 		videoGames.AddTopic (makeup);
@@ -97,10 +109,10 @@ class TopicSet {
 	}
 }
 
-class Topic
+public class Topic
 {
 	private List<Topic> relatedTopics;
-	private String topicName;
+	private TopicName topicName;
 	private Random rnd = new Random();
 
 	public List<Topic> GetPossibleTopics() {
@@ -125,7 +137,7 @@ class Topic
 		return nextTopics;
 	}
 
-	public Topic(String name) {
+	public Topic(TopicName name) {
 		topicName = name;
 		relatedTopics = new List<Topic> ();
 	}
@@ -135,7 +147,7 @@ class Topic
 	}
 
 	public String GetTopicName() {
-		return topicName;
+		return topicName.ToString ();;
 	}
 }
 
