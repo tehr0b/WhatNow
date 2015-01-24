@@ -21,7 +21,7 @@ public class KeyboardForButton : MonoBehaviour {
 
 	public void ButtonClick()
 	{
-		Debug.Log ("Button click went through");
+		Debug.Log ("Button click went through: " + name);
 	}
 
 }
