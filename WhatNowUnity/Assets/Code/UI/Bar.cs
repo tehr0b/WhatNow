@@ -51,6 +51,8 @@ public class Bar : MonoBehaviour {
 	[SerializeField]
 	float extraDrainPerDifficulty = .01f;
 
+	IEnumerator currFlash = null;
+
 	float drainFromDifficulty {
 		get {
 			return extraDrainPerDifficulty * Whiteboard.dateDifficulty;
@@ -132,7 +134,11 @@ public class Bar : MonoBehaviour {
 	}
 
 	public Coroutine RunFlashText(string text, Color color) {
-		return StartCoroutine (FlashText (text, color, labelFlashTime));
+		if (currFlash != null)
+			StopCoroutine (currFlash);
+
+		currFlash = FlashText (text, color, labelFlashTime);
+		return StartCoroutine (currFlash);
 	}
 
 	IEnumerator FlashText(string text, Color color, float time) {
@@ -144,6 +150,7 @@ public class Bar : MonoBehaviour {
 			currTime += Time.deltaTime;
 			label.color = new Color(color.r, color.g, color.b, flashCurve.Evaluate(currTime/time));
 		}
+		currFlash = null;
 	}
 
 }

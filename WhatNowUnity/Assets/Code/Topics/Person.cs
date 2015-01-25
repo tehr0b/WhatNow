@@ -8,6 +8,8 @@ public class Person {
 	List<TopicName> topicsLiked = new List<TopicName>();
 	List<TopicName> topicsHated = new List<TopicName>();
 
+	List<TopicName> knownTopicsLiked = new List<TopicName>();
+
 	public Person(){
 		TopicName topic;
 		while (topicsLiked.Count < ConversationManager.instance.dateInterestsCount) {
@@ -33,8 +35,19 @@ public class Person {
 		}
 	}
 
-	public bool Loves(TopicName topic) { return topicsLiked.Contains(topic); }
+	public bool Loves(TopicName topic) {
+		if (topicsLiked.Contains(topic)) {
+			if (!knownTopicsLiked.Contains(topic))
+				knownTopicsLiked.Add (topic);
+			return true;
+		}
+		return false; 
+	}
 	public bool Hates(TopicName topic) { 
 		return topic == TopicName.NOTHING || topicsHated.Contains(topic); 
+	}
+
+	public void StoreBadMemories() {
+		topicsLiked = knownTopicsLiked;
 	}
 }

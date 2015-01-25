@@ -1181,6 +1181,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11440670, guid: e222e395dc1504e479e932f4c5b7cb59, type: 2}
+      propertyPath: colorMinR
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440670, guid: e222e395dc1504e479e932f4c5b7cb59, type: 2}
+      propertyPath: colorMaxR
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440670, guid: e222e395dc1504e479e932f4c5b7cb59, type: 2}
+      propertyPath: colorMinG
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440670, guid: e222e395dc1504e479e932f4c5b7cb59, type: 2}
+      propertyPath: colorMaxG
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440670, guid: e222e395dc1504e479e932f4c5b7cb59, type: 2}
+      propertyPath: colorMinB
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11440670, guid: e222e395dc1504e479e932f4c5b7cb59, type: 2}
+      propertyPath: colorMaxB
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e222e395dc1504e479e932f4c5b7cb59, type: 2}
   m_RootGameObject: {fileID: 2020051241}
@@ -4642,12 +4666,12 @@ MonoBehaviour:
     boredFace: {fileID: 21300000, guid: c0da137c23e2a4d60ad07e24588bbf53, type: 3}
     normalFace: {fileID: 21300000, guid: 32b220eba3a50443ba19095522a53f15, type: 3}
     monsterColor: {r: 0, g: 0, b: 0, a: 0}
-  colorMinR: .300000012
-  colorMaxR: .899999976
-  colorMinG: .300000012
-  colorMaxG: .899999976
-  colorMinB: .300000012
-  colorMaxB: .899999976
+  colorMinR: 0
+  colorMaxR: 1
+  colorMinG: 0
+  colorMaxG: 1
+  colorMinB: 0
+  colorMaxB: 1
 --- !u!4 &2020051243
 Transform:
   m_ObjectHideFlags: 0

@@ -236,6 +236,8 @@ public class ConversationManager : MonoBehaviour {
 			ChangeInterest(hitInterest);
 			positiveBubble.ShowTopic(currentTopic);
 			hitBonus = loveHitBonus;
+
+
 		} else {
 			hitInterest = baseHitInterest;
 			bar.SetRelativeTarget (topicChangeBonus);
@@ -288,7 +290,7 @@ public class ConversationManager : MonoBehaviour {
 		loseBubble.PermaShow();
 		hasConversationEnded = true;
 
-		yourDate.TrimLikes (coveredTopics);
+		yourDate.BecomeBadMemories();
 		yourExes.Add (yourDate);
 		yourDate = null;
 
