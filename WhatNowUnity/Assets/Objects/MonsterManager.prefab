@@ -43,9 +43,17 @@ MonoBehaviour:
   - happyFace: {fileID: 21300000, guid: 3dceb7de59a3c41fca50c7199d190109, type: 3}
     boredFace: {fileID: 21300000, guid: db3d935de96534f19a1450fdb092228d, type: 3}
     normalFace: {fileID: 21300000, guid: 576ea2c15020d4abb965336d85efc505, type: 3}
+    monsterColor: {r: 0, g: 0, b: 0, a: 0}
   - happyFace: {fileID: 21300000, guid: d64d6816e07bc48f283c4e313274bdef, type: 3}
     boredFace: {fileID: 21300000, guid: cb649769c631b440d9821f8ef3f1e6b6, type: 3}
     normalFace: {fileID: 21300000, guid: ad355968d6b9a4b708e0632133a27ed6, type: 3}
+    monsterColor: {r: 0, g: 0, b: 0, a: 0}
+  colorMinR: .300000012
+  colorMaxR: .899999976
+  colorMinG: .300000012
+  colorMaxG: .899999976
+  colorMinB: .300000012
+  colorMaxB: .899999976
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -101,19 +101,19 @@ public class ConversationManager : MonoBehaviour {
 
 	Person yourDate {
 		get {
-			return PersistentDataManager.instance.currentDate;
+			return Whiteboard.currentDate;
 		}
 		set {
-			PersistentDataManager.instance.currentDate = value;
+			Whiteboard.currentDate = value;
 		}
 	}
 
 	List<Person> yourExes {
 		get {
-			return PersistentDataManager.instance.yourExes;
+			return Whiteboard.yourExes;
 		}
 		set {
-			PersistentDataManager.instance.yourExes = value;
+			Whiteboard.yourExes = value;
 		}
 	}
 
@@ -148,7 +148,7 @@ public class ConversationManager : MonoBehaviour {
 	/// </summary>
 	void StartConversation(){
 
-		if (PersistentDataManager.instance.lastDateSuccess)
+		if (Whiteboard.lastDateSuccess)
 		{
 			dateMonster.RegenerateLastMonster();
 		} else {
@@ -292,16 +292,16 @@ public class ConversationManager : MonoBehaviour {
 		yourExes.Add (yourDate);
 		yourDate = null;
 
-		PersistentDataManager.instance.lastDateSuccess = false;
-		PersistentDataManager.instance.dateDifficulty = 0;
+		Whiteboard.lastDateSuccess = false;
+		Whiteboard.dateDifficulty = 0;
 	}
 
 	public void ProcessWin() {
 		winBubble.PermaShow();
 		hasConversationEnded = true;
 
-		PersistentDataManager.instance.lastDateSuccess = true;
-		PersistentDataManager.instance.dateDifficulty++;
+		Whiteboard.lastDateSuccess = true;
+		Whiteboard.dateDifficulty++;
 	}
 
 	public void MoveOn() {

@@ -23,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 259.978851, y: 319.173584, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -50,18 +50,18 @@ MonoBehaviour:
   slider: {fileID: 0}
   currentInterest: 0
   maxInterest: 100
-  minInterest: -100
-  negativeInterestThreshold: -50
+  minInterest: -50
+  negativeInterestThreshold: -25
   positiveInterestThreshold: 50
   baseHitInterest: 10
-  dateLovesHitInterest: 20
+  dateLovesHitInterest: 15
   dateHatesHitInterest: -5
   baseHitBonus: .0500000007
-  loveHitBonus: .100000001
+  loveHitBonus: .075000003
   hateHitPenalty: -.0500000007
   topicChangeBonus: .100000001
   topicHatePenalty: -1
-  topicLoveBonus: 3
+  topicLoveBonus: 2
   positiveBubble: {fileID: 0}
   negativeBubble: {fileID: 0}
   exBubble: {fileID: 0}

@@ -53,7 +53,7 @@ public class Bar : MonoBehaviour {
 
 	float drainFromDifficulty {
 		get {
-			return extraDrainPerDifficulty * PersistentDataManager.instance.dateDifficulty;
+			return extraDrainPerDifficulty * Whiteboard.dateDifficulty;
 		}
 	}
 

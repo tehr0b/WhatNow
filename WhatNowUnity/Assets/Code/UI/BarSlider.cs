@@ -51,7 +51,7 @@ public class BarSlider : MonoBehaviour {
 
 	float accelForDiff {
 		get {
-			return accelPerDifficulty * PersistentDataManager.instance.dateDifficulty;
+			return accelPerDifficulty * Whiteboard.dateDifficulty;
 		}
 	}
 
