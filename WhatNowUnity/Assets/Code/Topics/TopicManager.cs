@@ -6,6 +6,8 @@ public class TopicManager : MonoBehaviour
 {
 	public static TopicManager instance;
 
+	public Sprite yourExSprite;
+
 	public int maxLinksPerTopic;
 
 	public List<TopicList> topicLinks = new List<TopicList>();
@@ -21,6 +23,8 @@ public class TopicManager : MonoBehaviour
 	}
 	
 	public Sprite SpriteForTopic(TopicName topic){
+		if (topic == TopicName.NOTHING)
+			return yourExSprite;
 		return topicSprites [(int)topic];
 	}
 

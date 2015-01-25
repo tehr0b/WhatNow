@@ -12,12 +12,12 @@ public class TopicIcon : MonoBehaviour {
 	bool _animating = false;
 	public bool animating { get { return _animating; } }
 
-	TopicName _topic;
+	[SerializeField] TopicName _topic;
 	public TopicName topic {
 		get { return _topic; }
 		set {
 			_topic = value;
-			//topicImage.sprite = TopicManager.instance.SpriteForTopic (value);
+			topicImage.sprite = TopicManager.instance.SpriteForTopic (value);
 		}
 	}
 

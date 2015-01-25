@@ -18,4 +18,12 @@ public static class Utils {
 [System.Serializable]
 public class TopicList {
 	public List<TopicName> list = new List<TopicName>();
+	public void Shuffle() {
+		for (int i = 0; i < list.Count; i++) {
+			int random = UnityEngine.Random.Range(0, list.Count);
+			TopicName temp = list[i];
+			list[i] = list[random];
+			list[random] = temp;
+		}
+	}
 }

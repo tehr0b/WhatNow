@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class ConversationManager : MonoBehaviour {
 
 	public static ConversationManager instance;
-	private TopicManager topicManager;
+
 	private TopicName currentTopic;
 
 	private TopicList coveredTopics = new TopicList ();
@@ -59,8 +59,11 @@ public class ConversationManager : MonoBehaviour {
 		instance = this;
 	}
 
-	void OnLevelWasLoaded() {
-		topicManager = new TopicManager ();
+	void Start() {
+		StartConversation();
+	}
+
+	void OnLevelWasLoaded(int index) {
 		StartConversation();
 	}
 
@@ -69,18 +72,26 @@ public class ConversationManager : MonoBehaviour {
 	/// gives you your initial topic
 	/// </summary>
 	void StartConversation(){
-		currentTopic = topicManager.GetStartingTopic ();
+		currentTopic = TopicManager.instance.GetStartingTopic ();
 		coveredTopics.list.Add (currentTopic);
+
+		currentTopicIcon.topic = currentTopic;
+
+		TopicList otherTopics = getRelatedTopics (currentTopic);
+		for (int i = 0; i < topicOptions.Length; i++) {
+			topicOptions[i].topic = otherTopics.list[i];
+		}
 	}
 
 	public TopicList getRelatedTopics (TopicName topic) {
-		TopicList relatedTopics = topicManager.GetRelatedTopics (topic);
+		TopicList relatedTopics = TopicManager.instance.GetRelatedTopics (topic);
 		foreach (TopicName seenTopic in coveredTopics.list) {
-			relatedTopics.list.Remove(topic);
+			relatedTopics.list.RemoveAll(x => x == seenTopic);
 		}
-		for (int i = 4 - relatedTopics.list.Count; i > 0; i--) {
+		while (relatedTopics.list.Count < 4) {
 			relatedTopics.list.Add(TopicName.NOTHING);
 		}
+		relatedTopics.Shuffle ();
 		return relatedTopics;
 	}
 
@@ -90,23 +101,25 @@ public class ConversationManager : MonoBehaviour {
 	/// </summary>
 	/// <param name="buttonTopicIcon">Button topic icon.</param>
 	public TopicIcon ChangeTopic(ButtonTopicIcon buttonTopicIcon){
+		coveredTopics.list.Add (buttonTopicIcon.topicIcon.topic);
+
 		TopicIcon oldCurrent = currentTopicIcon;
 
-		//TODO: Pick new topics based on new topic
-
-		oldCurrent.RunChangeToNextTopic (oldCurrent.topic, buttonTopicIcon.topicIcon.transform.localPosition);
-		
-		buttonTopicIcon.topicIcon.RunBecomeMainTopic ();
-		currentTopicIcon = buttonTopicIcon.topicIcon;
+		TopicList newTopics = getRelatedTopics (buttonTopicIcon.topicIcon.topic);
 
 		for (int i = 0; i < topicOptions.Length; i++) {
 			if (topicOptions[i] == buttonTopicIcon.topicIcon) {
 				topicOptions[i] = oldCurrent;
+				oldCurrent.RunChangeToNextTopic (newTopics.list[i], buttonTopicIcon.topicIcon.transform.localPosition);
 			} else {
 				//TODO: Change this to its next topic
-				topicOptions[i].RunChangeToNextTopic(topicOptions[i].topic);
+				topicOptions[i].RunChangeToNextTopic(newTopics.list[i]);
 			}
 		}
+
+		buttonTopicIcon.topicIcon.RunBecomeMainTopic ();
+		currentTopicIcon = buttonTopicIcon.topicIcon;
+		currentTopic = currentTopicIcon.topic;
 
 		//TODO: Make hating/loving the topic influence it
 		bar.SetRelativeTarget (topicChangeBonus);
