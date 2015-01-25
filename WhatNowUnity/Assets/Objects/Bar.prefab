@@ -143,6 +143,7 @@ MonoBehaviour:
   normalMoveSpeed: .25
   exTopicMoveSpeed: .5
   acceleration: .00999999978
+  accelPerDifficulty: .00999999978
   direction: 1
 --- !u!114 &11456750
 MonoBehaviour:
@@ -219,10 +220,11 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-  normalDrainRate: .0199999996
-  exTopicDrainRate: .0399999991
-  drainPerHit: .0199999996
+  normalDrainRate: .00999999978
+  exTopicDrainRate: .0199999996
+  drainPerHit: .0299999993
   lerpRate: 1
+  extraDrainPerDifficulty: .00999999978
   target: 0
   setTarget: 0
 --- !u!114 &11456756

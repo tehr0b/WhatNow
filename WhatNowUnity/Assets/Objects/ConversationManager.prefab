@@ -49,27 +49,27 @@ MonoBehaviour:
   bar: {fileID: 0}
   slider: {fileID: 0}
   currentInterest: 0
-  maxInterest: 100
+  maxInterest: 125
   minInterest: -50
   negativeInterestThreshold: -25
-  positiveInterestThreshold: 50
-  baseHitInterest: 10
-  dateLovesHitInterest: 15
-  dateHatesHitInterest: -5
-  baseHitBonus: .0500000007
-  loveHitBonus: .075000003
-  hateHitPenalty: -.0500000007
-  topicChangeBonus: .100000001
-  topicHatePenalty: -1
-  topicLoveBonus: 2
+  positiveInterestThreshold: 75
+  baseHitInterest: 5
+  dateLovesHitInterest: 7
+  dateHatesHitInterest: -10
+  baseHitBonus: .0299999993
+  loveHitBonus: .0799999982
+  hateHitPenalty: -.0799999982
+  topicChangeBonus: .0199999996
+  topicHatePenalty: -4
+  topicLoveBonus: 4
   positiveBubble: {fileID: 0}
   negativeBubble: {fileID: 0}
   exBubble: {fileID: 0}
   winBubble: {fileID: 0}
   loseBubble: {fileID: 0}
   hitsThisTopic: 0
-  dateInterestsCount: 3
-  dateHateCount: 3
+  dateInterestsCount: 5
+  dateHateCount: 5
   hasConversationStarted: 0
   hasConversationEnded: 0
 --- !u!1001 &100100000
