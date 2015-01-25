@@ -10,7 +10,7 @@ public class TopicManager : MonoBehaviour
 
 	public int maxLinksPerTopic;
 
-	public TopicName randomTopic {
+	public static TopicName randomTopic {
 		get {
 			return (TopicName)UnityEngine.Random.Range(1, (int)TopicName.MAX);
 		}
