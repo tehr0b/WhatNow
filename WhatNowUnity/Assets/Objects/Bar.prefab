@@ -231,10 +231,36 @@ MonoBehaviour:
   - Cool!
   - Interesting!
   - I like you.
+  - How cultured!
+  - So worldly!
+  - My word!
+  - Oh you're so funny!
+  - You're so right!
+  - What a story!
+  - So very impressive...
+  - '*Stares longingly*'
+  - You date like a pro!
+  - How did you know?
+  - Aw so sweet!
+  - I like you.
+  - "(\u2661\u2200\u2661)"
   missWords:
   - :/
   - Um... What?
+  - Gross...
+  - Not really my thing...
+  - '*Clears Throat*'
   - Excuse me?
+  - Ha. You're funny.
+  - '*Checks the time*'
+  - Cool story...
+  - Wow. Rude.
+  - Was that a joke?
+  - Ah.
+  - That's disgusting.
+  - '*Yawn*'
+  - Excuse me?
+  - "(\u0CA0\u76CA\u0CA0)"
 --- !u!114 &11456756
 MonoBehaviour:
   m_ObjectHideFlags: 1
