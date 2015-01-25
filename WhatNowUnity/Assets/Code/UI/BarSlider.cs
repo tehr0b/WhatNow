@@ -25,11 +25,32 @@ public class BarSlider : MonoBehaviour {
 		}
 	}
 
-	[SerializeField] float moveSpeed = 30;
+	float moveSpeed{
+		get{
+			return currSpeed + accelBonus;
+		}
+	}
+
+	float currSpeed;
+
+	[SerializeField] float normalMoveSpeed = 30;
+
+	[SerializeField] float exTopicMoveSpeed = 50;
+
+	float accelBonus = 0;
+
 	[SerializeField] float acceleration = .25f;
+
 	public int direction = 1;
 
 	bool hasHitThisPass = false;
+
+	public bool exTopic {
+		set {
+			if (value) currSpeed = exTopicMoveSpeed;
+			else currSpeed = normalMoveSpeed;
+		}
+	}
 
 	void Start() {
 		transform.localPosition = new Vector3 (-limit, transform.localPosition.y, transform.localPosition.z);
@@ -37,36 +58,38 @@ public class BarSlider : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(moveSpeed * direction * Time.deltaTime, 0, 0);
-		if (Mathf.Abs (transform.localPosition.x) > limit) {
-			transform.localPosition = new Vector3(
-				Mathf.Clamp(transform.localPosition.x,
-			            -limit,
-			            limit),
+		if (ConversationManager.instance.isConversationRunning) {
+			transform.Translate (moveSpeed * direction * Time.deltaTime, 0, 0);
+			if (Mathf.Abs (transform.localPosition.x) > limit) {
+				transform.localPosition = new Vector3 (
+					Mathf.Clamp (transform.localPosition.x,
+	    	        -limit,
+	        	    limit),
 				transform.localPosition.y,
 				transform.localPosition.z);
-			direction *= -1;
+				direction *= -1;
 
-			if (!hasHitThisPass) {
-				ConversationManager.instance.Miss();
+				if (!hasHitThisPass) {
+					ConversationManager.instance.Miss ();
+				}
+
+				hasHitThisPass = false;
+				sliderImage.color = hasColor;
 			}
 
-			hasHitThisPass = false;
-			sliderImage.color = hasColor;
-		}
-
-		if (!hasHitThisPass && Input.GetKeyDown (KeyCode.Space)) {
-			Debug.Log(transform.localPosition.x + ", " + limit + ", " + bar.fill);
-			if (Mathf.Abs(transform.localPosition.x) < limit * bar.fill) {
-				ConversationManager.instance.Hit();
-			} else {
-				ConversationManager.instance.Miss();
+			if (!hasHitThisPass && Input.GetKeyDown (KeyCode.Space)) {
+				///Debug.Log (transform.localPosition.x + ", " + limit + ", " + bar.fill);
+				if (Mathf.Abs (transform.localPosition.x) < limit * bar.fill) {
+					ConversationManager.instance.Hit ();
+				} else {
+					ConversationManager.instance.Miss ();
+				}
+				hasHitThisPass = true;
+				sliderImage.color = doesntColor;
 			}
-			hasHitThisPass = true;
-			sliderImage.color = doesntColor;
-		}
 
-		moveSpeed += acceleration * Time.deltaTime;
+			accelBonus += acceleration * Time.deltaTime;
+		}
 	}
 		
 }

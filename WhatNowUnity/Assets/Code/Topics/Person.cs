@@ -20,8 +20,21 @@ public class Person {
 		while (topicsHated.Count < ConversationManager.instance.dateInterestsCount) {
 			topic = TopicManager.instance.randomTopic;
 			if (!topicsLiked.Contains(topic) && !topicsHated.Contains(topic)) {
-				topicsLiked.Add(topic);
+				topicsHated.Add(topic);
 			}
 		}
+	}
+
+	public void TrimLikes(TopicList topicsSeen) {
+		for (int i = topicsLiked.Count-1; i >= 0; i--) {
+			if (!topicsSeen.list.Contains(topicsLiked[i])){
+				topicsLiked.RemoveAt(i);
+			}
+		}
+	}
+
+	public bool Loves(TopicName topic) { return topicsLiked.Contains(topic); }
+	public bool Hates(TopicName topic) { 
+		return topic == TopicName.NOTHING || topicsHated.Contains(topic); 
 	}
 }

@@ -12,6 +12,16 @@ public class TopicIcon : MonoBehaviour {
 	bool _animating = false;
 	public bool animating { get { return _animating; } }
 
+	float alpha {
+		set {
+			topicImage.color = new Color(
+				topicImage.color.r,
+				topicImage.color.g,
+				topicImage.color.b,
+				value);
+		}
+	}
+
 	[SerializeField] TopicName _topic;
 	public TopicName topic {
 		get { return _topic; }
@@ -34,8 +44,7 @@ public class TopicIcon : MonoBehaviour {
 		float currTime = 0;
 		while (currTime < transitionTime) {
 			currTime += Time.deltaTime;
-			topicImage.color = new Color(topicImage.color.r, topicImage.color.g,
-			                             topicImage.color.b, 1 - currTime/transitionTime);
+			alpha = 1 - currTime/transitionTime;
 			yield return null;
 		}
 		transform.localPosition = nextPos;
@@ -43,8 +52,7 @@ public class TopicIcon : MonoBehaviour {
 		currTime = 0;
 		while (currTime < transitionTime) {
 			currTime += Time.deltaTime;
-			topicImage.color = new Color(topicImage.color.r, topicImage.color.g,
-			                             topicImage.color.b, currTime/transitionTime);
+			alpha = currTime/transitionTime;
 			yield return null;
 		}
 		_animating = false;
@@ -66,4 +74,7 @@ public class TopicIcon : MonoBehaviour {
 		_animating = false;
 	}
 
+	public void Hide() {
+		alpha = 0;
+	}
 }

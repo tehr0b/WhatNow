@@ -28,8 +28,13 @@ public class Bar : MonoBehaviour {
 	[SerializeField]
 	AnimationCurve flashCurve;
 
+	float drainRate;
+
 	[SerializeField]
-	float drainRate = .2f;
+	float normalDrainRate = .2f;
+
+	[SerializeField]
+	float exTopicDrainRate = .3f;
 
 	[SerializeField]
 	float lerpRate = 1;
@@ -40,16 +45,23 @@ public class Bar : MonoBehaviour {
 	[SerializeField]
 	bool setTarget = false;
 
-	float _fill = 1;
+	public bool exTopic{
+		set{
+			if (value) drainRate = exTopicDrainRate;
+			else drainRate = normalDrainRate;
+		}
+	}
+
+	float _fill = .7f;
 	public float fill {
 		set {
+			_fill = Mathf.Min(value, 1);
 			overBarRight.rectTransform.sizeDelta = new Vector2(
-				value * underBar.rectTransform.sizeDelta.x/2,
+				_fill * underBar.rectTransform.sizeDelta.x/2,
 				underBar.rectTransform.sizeDelta.y);
 			overBarLeft.rectTransform.sizeDelta = new Vector2(
-				value * underBar.rectTransform.sizeDelta.x/2,
+				_fill * underBar.rectTransform.sizeDelta.x/2,
 				underBar.rectTransform.sizeDelta.y);
-			_fill = value;
 		}
 		get {
 			return _fill;
@@ -58,6 +70,7 @@ public class Bar : MonoBehaviour {
 
 	void Update() {
 		if (ConversationManager.instance.isConversationRunning) {
+			Debug.Log("!");
 			if (setTarget) {
 				if (fill < target) {
 					fill = Mathf.Min (target, fill + lerpRate * Time.deltaTime);
@@ -83,7 +96,7 @@ public class Bar : MonoBehaviour {
 	}
 
 	public void SetRelativeTarget(float val) {
-		target = val + fill;
+		target = Mathf.Min(val + fill, 1);
 		setTarget = true;
 	}
 
