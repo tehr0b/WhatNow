@@ -143,6 +143,7 @@ MonoBehaviour:
   normalMoveSpeed: .25
   exTopicMoveSpeed: .5
   acceleration: .00999999978
+  accelPerDifficulty: .00999999978
   direction: 1
 --- !u!114 &11456750
 MonoBehaviour:
@@ -223,8 +224,17 @@ MonoBehaviour:
   exTopicDrainRate: .0399999991
   drainPerHit: .0199999996
   lerpRate: 1
+  extraDrainPerDifficulty: .00999999978
   target: 0
   setTarget: 0
+  hitWords:
+  - Cool!
+  - Interesting!
+  - I like you.
+  missWords:
+  - :/
+  - Um... What?
+  - Excuse me?
 --- !u!114 &11456756
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -268,8 +278,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 1
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Hit!
 --- !u!222 &22256748
