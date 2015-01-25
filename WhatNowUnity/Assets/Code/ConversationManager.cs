@@ -6,6 +6,10 @@ using System.Collections.Generic;
 public class ConversationManager : MonoBehaviour {
 
 	public static ConversationManager instance;
+	private TopicManager topicManager;
+	private TopicName currentTopic;
+
+	private TopicList coveredTopics = new TopicList ();
 
 	[SerializeField]
 	Monster dateMonster;
@@ -14,7 +18,7 @@ public class ConversationManager : MonoBehaviour {
 	TopicIcon[] topicOptions;
 
 	[SerializeField]
-	TopicIcon currentTopic;
+	TopicIcon currentTopicIcon;
 
 	[SerializeField]
 	Bar bar;
@@ -55,16 +59,29 @@ public class ConversationManager : MonoBehaviour {
 		instance = this;
 	}
 
-	void OnLevelLoaded() {
+	void OnLevelWasLoaded() {
+		topicManager = new TopicManager ();
 		StartConversation();
 	}
 
 	/// <summary>
 	/// STUB: Sets up the converation, initializes your date, and
-	/// gives you your initial 
+	/// gives you your initial topic
 	/// </summary>
 	void StartConversation(){
+		currentTopic = topicManager.GetStartingTopic ();
+		coveredTopics.list.Add (currentTopic);
+	}
 
+	public TopicList getRelatedTopics (TopicName topic) {
+		TopicList relatedTopics = topicManager.GetRelatedTopics ();
+		foreach (TopicName seenTopic in coveredTopics.list) {
+			relatedTopics.list.RemoveAll(seenTopic);
+		}
+		for (i = 4 - relatedTopics.list.Count; i > 0; i--) {
+			relatedTopics.list.Add(TopicName.NOTHING);
+		}
+		return relatedTopics;
 	}
 
 	/// <summary>
@@ -73,14 +90,14 @@ public class ConversationManager : MonoBehaviour {
 	/// </summary>
 	/// <param name="buttonTopicIcon">Button topic icon.</param>
 	public TopicIcon ChangeTopic(ButtonTopicIcon buttonTopicIcon){
-		TopicIcon oldCurrent = currentTopic;
+		TopicIcon oldCurrent = currentTopicIcon;
 
 		//TODO: Pick new topics based on new topic
 
 		oldCurrent.RunChangeToNextTopic (oldCurrent.topic, buttonTopicIcon.topicIcon.transform.localPosition);
 		
 		buttonTopicIcon.topicIcon.RunBecomeMainTopic ();
-		currentTopic = buttonTopicIcon.topicIcon;
+		currentTopicIcon = buttonTopicIcon.topicIcon;
 
 		for (int i = 0; i < topicOptions.Length; i++) {
 			if (topicOptions[i] == buttonTopicIcon.topicIcon) {
