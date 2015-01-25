@@ -45,4 +45,16 @@ public class TopicManager : MonoBehaviour
 	public TopicName GetStartingTopic() {
 		return (TopicName) UnityEngine.Random.Range(1, (int)TopicName.MAX);
 	}
+
+	public TopicList GetStartingTopics() {
+		TopicList list = new TopicList ();
+		TopicName topic;
+		while (list.list.Count < 4) {
+			topic = (TopicName)UnityEngine.Random.Range(1, (int)TopicName.MAX);
+			if (!list.list.Contains(topic)) {
+				list.list.Add(topic);
+			}
+		}
+		return list;
+	}
 }

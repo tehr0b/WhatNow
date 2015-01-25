@@ -28,7 +28,7 @@ public class Monster : MonoBehaviour {
 
 	public MonsterMood passiveState;
 
-	Coroutine currTempState;
+	IEnumerator currTempState;
 
 	public void Awake ()
 	{
@@ -45,8 +45,9 @@ public class Monster : MonoBehaviour {
 	public void SetTempState(MonsterMood mood) {
 		if (currTempState != null)
 			StopCoroutine (currTempState);
-
-		currTempState = StartCoroutine (TempState (mood));
+	
+		currTempState = (TempState (mood));
+		StartCoroutine (currTempState);
 	}
 
 	IEnumerator TempState(MonsterMood mood) {
