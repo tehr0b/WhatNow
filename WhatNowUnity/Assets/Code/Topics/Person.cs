@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class Person {
 
 	List<TopicName> topicsLiked = new List<TopicName>();
