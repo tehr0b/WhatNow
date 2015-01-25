@@ -2079,7 +2079,6 @@ MonoBehaviour:
   happyFace: {fileID: 21300000, guid: 3dceb7de59a3c41fca50c7199d190109, type: 3}
   boredFace: {fileID: 21300000, guid: db3d935de96534f19a1450fdb092228d, type: 3}
   normalFace: {fileID: 21300000, guid: 576ea2c15020d4abb965336d85efc505, type: 3}
-  dateSatisfaction: 1
   image: {fileID: 1762688911}
   tempStateTime: 3
   passiveState: 0
@@ -2116,7 +2115,7 @@ MonoBehaviour:
   - {fileID: 1876185314}
   - {fileID: 1350744651}
   - {fileID: 722903633}
-  currentTopic: {fileID: 1047255183}
+  currentTopicIcon: {fileID: 1047255183}
   bar: {fileID: 1845968866}
   currentInterest: 0
   maxInterest: 100
