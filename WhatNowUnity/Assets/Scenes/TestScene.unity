@@ -153,6 +153,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 11475432, guid: c02dbbca37d6af943b089d0951a12e79, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1809011937}
+    - target: {fileID: 11475432, guid: c02dbbca37d6af943b089d0951a12e79, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveOn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c02dbbca37d6af943b089d0951a12e79, type: 2}
   m_RootGameObject: {fileID: 266721767}
@@ -387,6 +395,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 11493050, guid: ae41389d93021f640828c5dba3989d72, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1809011937}
+    - target: {fileID: 11493050, guid: ae41389d93021f640828c5dba3989d72, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveOn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae41389d93021f640828c5dba3989d72, type: 2}
   m_RootGameObject: {fileID: 1908182001}
@@ -557,7 +573,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1809011937}
         m_MethodName: MoveOn
         m_Mode: 1
         m_Arguments:
@@ -889,6 +905,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 11457406, guid: 396f69c3f9cf7c94586c631f59815f0c, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300050, guid: e6976763e0b7cb440a37f78b38859f37,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 396f69c3f9cf7c94586c631f59815f0c, type: 2}
   m_RootGameObject: {fileID: 1784131396}
@@ -2326,8 +2347,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b5b8b8930debe48993cba1be279b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastDateSuccess: 0
-  dateDifficulty: 0
 --- !u!4 &1321216155
 Transform:
   m_ObjectHideFlags: 0
@@ -2807,7 +2826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5e5668e9d78d8409798dfd754b6bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yourExSprite: {fileID: 21300000, guid: 292961d07f2ae324f836b96daf76fd19, type: 3}
+  yourExSprite: {fileID: 21300000, guid: b3137d29e1c57644caead4a327f9e33d, type: 3}
   maxLinksPerTopic: 4
   topicLinks:
   - list: 
@@ -3111,7 +3130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300008, guid: e6976763e0b7cb440a37f78b38859f37, type: 3}
+  m_Sprite: {fileID: 21300050, guid: e6976763e0b7cb440a37f78b38859f37, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4144,7 +4163,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1809011937}
         m_MethodName: MoveOn
         m_Mode: 1
         m_Arguments:
@@ -4409,7 +4428,7 @@ Prefab:
     - target: {fileID: 11495186, guid: 4a747042db10c9c45a2fc2f8b30fc319, type: 2}
       propertyPath: yourExSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 292961d07f2ae324f836b96daf76fd19,
+      objectReference: {fileID: 21300000, guid: b3137d29e1c57644caead4a327f9e33d,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a747042db10c9c45a2fc2f8b30fc319, type: 2}
