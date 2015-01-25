@@ -83,6 +83,9 @@ public class ConversationManager : MonoBehaviour {
 	[SerializeField]
 	Bubble exBubble;
 
+	public int hitsThisTopic = 0;
+
+	int missesThisTopic = 0;
 
 	public int dateInterestsCount = 3;
 
@@ -160,6 +163,14 @@ public class ConversationManager : MonoBehaviour {
 	public TopicIcon ChangeTopic(ButtonTopicIcon buttonTopicIcon){
 		hasConversationStarted = true;
 
+		hitsThisTopic = 0;
+
+		//Keep chaining misses if the player is stuck on their ex
+		//Give them the quick death
+		//The easy way out
+		if (buttonTopicIcon.topicIcon.topic != currentTopic)
+			missesThisTopic = 0;
+
 		coveredTopics.list.Add (buttonTopicIcon.topicIcon.topic);
 
 		TopicIcon oldCurrent = currentTopicIcon;
@@ -211,13 +222,14 @@ public class ConversationManager : MonoBehaviour {
 	}
 
 	public void Hit() {
+		hitsThisTopic++;
 		ChangeInterest (bar.fill * hitInterest);
 		bar.SetRelativeTarget(hitBonus);
 		bar.RunFlashHit();
 	}
 
 	public void Miss() {
-		ChangeInterest (-Mathf.Abs(hitInterest));
+		ChangeInterest (-Mathf.Abs(hitInterest) * ++missesThisTopic);
 		bar.RunFlashMiss();
 	}
 

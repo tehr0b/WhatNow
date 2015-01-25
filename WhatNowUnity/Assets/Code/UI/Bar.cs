@@ -28,6 +28,12 @@ public class Bar : MonoBehaviour {
 	[SerializeField]
 	AnimationCurve flashCurve;
 
+	float drain {
+		get {
+			return drainRate + ConversationManager.instance.hitsThisTopic * drainPerHit;
+		}
+	}
+
 	float drainRate;
 
 	[SerializeField]
@@ -35,6 +41,9 @@ public class Bar : MonoBehaviour {
 
 	[SerializeField]
 	float exTopicDrainRate = .3f;
+
+	[SerializeField]
+	float drainPerHit = .01f;
 
 	[SerializeField]
 	float lerpRate = 1;
