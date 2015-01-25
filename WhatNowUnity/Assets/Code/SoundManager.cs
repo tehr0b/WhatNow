@@ -9,9 +9,16 @@ public class SoundManager : MonoBehaviour {
 	[SerializeField]
 	AudioClip[] allMusics;
 
-	int lastMusicIndex = -1;
+	static int lastMusicIndex = -1;
 
 	void Start() {
+		StartCoroutine (WaitForConversationStart ());
+	}
+
+	IEnumerator WaitForConversationStart() {
+		while (!ConversationManager.instance.hasConversationStarted) {
+			yield return null;
+		}
 		StartRandomMusic ();
 	}
 
