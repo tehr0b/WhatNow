@@ -10,6 +10,12 @@ public class TopicManager : MonoBehaviour
 
 	public int maxLinksPerTopic;
 
+	public TopicName randomTopic {
+		get {
+			return (TopicName)UnityEngine.Random.Range(1, (int)TopicName.MAX);
+		}
+	}
+
 	public List<TopicList> topicLinks = new List<TopicList>();
 
 	//public Dictionary<TopicName, List<TopicName>> topicLinks = new Dictionary<TopicName, List<TopicName>>();

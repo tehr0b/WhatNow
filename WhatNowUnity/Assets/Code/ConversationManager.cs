@@ -50,6 +50,10 @@ public class ConversationManager : MonoBehaviour {
 	[SerializeField]
 	float topicLoveBonus = 3;
 
+	public int dateInterestsCount = 3;
+
+	public int dateHateCount = 3;
+
 	Person yourDate;
 	List<Person> yourExes;
 
