@@ -41,7 +41,6 @@ public class ConversationManager : MonoBehaviour {
 	[SerializeField]
 	float positiveInterestThreshold = 50;
 
-
 	float hitInterest;
 
 	[SerializeField]
@@ -112,12 +111,13 @@ public class ConversationManager : MonoBehaviour {
 
 	void Awake() {
 		if (instance != null) {
+			Debug.Log("Instance exists, destroying self");
 			Destroy(gameObject);
 			return;
 		}
 
 		instance = this;
-		DontDestroyOnLoad = true;
+		DontDestroyOnLoad (gameObject);
 	}
 
 	void Start() {
@@ -134,7 +134,7 @@ public class ConversationManager : MonoBehaviour {
 	/// gives you your initial topic
 	/// </summary>
 	void StartConversation(){
-		if (yourDate = null)
+		if (yourDate == null)
 			yourDate = new Person();
 		dateMonster.GenerateNewMonster();
 		dateMonster.SetPassiveState(MonsterMood.NEUTRAL);
