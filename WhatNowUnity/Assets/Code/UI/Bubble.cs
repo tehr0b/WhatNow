@@ -40,6 +40,7 @@ public class Bubble : MonoBehaviour {
 	}
 
 	public void PermaShow() {
+		gameObject.SetActive (true);
 		StartCoroutine (FadeIn ());
 	}
 

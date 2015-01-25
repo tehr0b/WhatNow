@@ -41,6 +41,7 @@ public class ConversationManager : MonoBehaviour {
 	[SerializeField]
 	float positiveInterestThreshold = 50;
 
+
 	float hitInterest;
 
 	[SerializeField]
@@ -51,6 +52,7 @@ public class ConversationManager : MonoBehaviour {
 
 	[SerializeField]
 	float dateHatesHitInterest = -5;
+
 
 	float hitBonus = .05f;
 
@@ -97,8 +99,23 @@ public class ConversationManager : MonoBehaviour {
 
 	public int dateHateCount = 3;
 
-	Person yourDate = null;
-	List<Person> yourExes = new List<Person>();
+	Person yourDate {
+		get {
+			return PersistentDataManager.instance.currentDate;
+		}
+		set {
+			PersistentDataManager.instance.currentDate = value;
+		}
+	}
+
+	List<Person> yourExes {
+		get {
+			return PersistentDataManager.instance.yourExes;
+		}
+		set {
+			PersistentDataManager.instance.yourExes = value;
+		}
+	}
 
 	public bool hasConversationStarted = false;
 	public bool hasConversationEnded = false;
@@ -110,14 +127,7 @@ public class ConversationManager : MonoBehaviour {
 	}
 
 	void Awake() {
-		if (instance != null) {
-			Debug.Log("Instance exists, destroying self");
-			Destroy(gameObject);
-			return;
-		}
-
 		instance = this;
-		DontDestroyOnLoad (gameObject);
 	}
 
 	void Start() {
@@ -126,21 +136,28 @@ public class ConversationManager : MonoBehaviour {
 	}
 
 	void OnLevelWasLoaded(int index) {
-		StartConversation();
+		if (instance == this) {
+			Debug.Log ("Level was loaded");
+			StartConversation ();
+		}
 	}
 
 	/// <summary>
-	/// STUB: Sets up the converation, initializes your date, and
+	/// Sets up the converation, initializes your date, and
 	/// gives you your initial topic
 	/// </summary>
 	void StartConversation(){
-		if (yourDate == null)
+
+		if (PersistentDataManager.instance.lastDateSuccess)
+		{
+			dateMonster.RegenerateLastMonster();
+		} else {
 			yourDate = new Person();
-		dateMonster.GenerateNewMonster();
+			dateMonster.GenerateNewMonster();
+		}
 		dateMonster.SetPassiveState(MonsterMood.NEUTRAL);
 
 		currentTopic = TopicName.NOTHING;
-		//coveredTopics.list.Add (currentTopic);
 
 		currentTopicIcon.Hide ();
 
@@ -148,13 +165,6 @@ public class ConversationManager : MonoBehaviour {
 		for (int i = 0; i < startingTopics.list.Count; i++) {
 			topicOptions[i].topic = startingTopics.list[i];
 		}
-
-		//currentTopicIcon.topic = currentTopic;
-
-		//TopicList otherTopics = GetRelatedTopics (currentTopic);
-		//for (int i = 0; i < topicOptions.Length; i++) {
-	//		topicOptions[i].topic = otherTopics.list[i];
-	//	}
 	}
 
 	public TopicList GetRelatedTopics (TopicName topic) {
@@ -170,7 +180,7 @@ public class ConversationManager : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// STUB: Changes the topic to the topic of the topic icon of
+	/// Changes the topic to the topic of the topic icon of
 	/// the specified ButtonTopicIcon
 	/// </summary>
 	/// <param name="buttonTopicIcon">Button topic icon.</param>
@@ -281,11 +291,21 @@ public class ConversationManager : MonoBehaviour {
 		yourDate.TrimLikes (coveredTopics);
 		yourExes.Add (yourDate);
 		yourDate = null;
+
+		PersistentDataManager.instance.lastDateSuccess = false;
+		PersistentDataManager.instance.dateDifficulty = 0;
 	}
 
 	public void ProcessWin() {
 		winBubble.PermaShow();
 		hasConversationEnded = true;
+
+		PersistentDataManager.instance.lastDateSuccess = true;
+		PersistentDataManager.instance.dateDifficulty++;
+	}
+
+	public void MoveOn() {
+		Application.LoadLevel ("TestScene");
 	}
 
 	bool AnyExLoved(TopicName topic) {

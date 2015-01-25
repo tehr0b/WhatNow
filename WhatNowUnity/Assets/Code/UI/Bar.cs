@@ -30,7 +30,7 @@ public class Bar : MonoBehaviour {
 
 	float drain {
 		get {
-			return drainRate + ConversationManager.instance.hitsThisTopic * drainPerHit;
+			return drainFromDifficulty + drainRate + ConversationManager.instance.hitsThisTopic * drainPerHit;
 		}
 	}
 
@@ -47,6 +47,15 @@ public class Bar : MonoBehaviour {
 
 	[SerializeField]
 	float lerpRate = 1;
+
+	[SerializeField]
+	float extraDrainPerDifficulty = .01f;
+
+	float drainFromDifficulty {
+		get {
+			return extraDrainPerDifficulty * PersistentDataManager.instance.dateDifficulty;
+		}
+	}
 
 	[SerializeField]
 	float target;

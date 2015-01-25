@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 467668}
   - 114: {fileID: 11467666}
-  - 114: {fileID: 11467668}
   m_Layer: 0
   m_Name: ConversationManager
   m_TagString: Untagged
@@ -24,7 +23,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 259.978851, y: 319.173584, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,34 +47,31 @@ MonoBehaviour:
   - {fileID: 0}
   currentTopicIcon: {fileID: 0}
   bar: {fileID: 0}
+  slider: {fileID: 0}
   currentInterest: 0
   maxInterest: 100
   minInterest: -100
   negativeInterestThreshold: -50
   positiveInterestThreshold: 50
-  hitInterest: 10
+  baseHitInterest: 10
+  dateLovesHitInterest: 20
+  dateHatesHitInterest: -5
+  baseHitBonus: .0500000007
+  loveHitBonus: .100000001
+  hateHitPenalty: -.0500000007
   topicChangeBonus: .100000001
   topicHatePenalty: -1
   topicLoveBonus: 3
-  isConversationRunning: 1
---- !u!114 &11467668
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5b9913b6cf6f4693a669e6871514a13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  monsterSprites:
-  - happyFace: {fileID: 21300000, guid: 3dceb7de59a3c41fca50c7199d190109, type: 3}
-    boredFace: {fileID: 21300000, guid: db3d935de96534f19a1450fdb092228d, type: 3}
-    normalFace: {fileID: 21300000, guid: 576ea2c15020d4abb965336d85efc505, type: 3}
-  - happyFace: {fileID: 21300000, guid: d64d6816e07bc48f283c4e313274bdef, type: 3}
-    boredFace: {fileID: 21300000, guid: cb649769c631b440d9821f8ef3f1e6b6, type: 3}
-    normalFace: {fileID: 21300000, guid: ad355968d6b9a4b708e0632133a27ed6, type: 3}
+  positiveBubble: {fileID: 0}
+  negativeBubble: {fileID: 0}
+  exBubble: {fileID: 0}
+  winBubble: {fileID: 0}
+  loseBubble: {fileID: 0}
+  hitsThisTopic: 0
+  dateInterestsCount: 3
+  dateHateCount: 3
+  hasConversationStarted: 0
+  hasConversationEnded: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

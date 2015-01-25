@@ -47,6 +47,14 @@ public class BarSlider : MonoBehaviour {
 
 	[SerializeField] float acceleration = .01f;
 
+	[SerializeField] float accelPerDifficulty = .01f;
+
+	float accelForDiff {
+		get {
+			return accelPerDifficulty * PersistentDataManager.instance.dateDifficulty;
+		}
+	}
+
 	public int direction = 1;
 
 	bool hasHitThisPass = false;
@@ -87,7 +95,7 @@ public class BarSlider : MonoBehaviour {
 				TryToHit();
 			}
 
-			accelBonus += acceleration * Time.deltaTime;
+			accelBonus += (acceleration+accelForDiff) * Time.deltaTime;
 		}
 	}
 

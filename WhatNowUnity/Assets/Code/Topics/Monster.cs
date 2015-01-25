@@ -11,11 +11,13 @@ public enum MonsterMood {
 }
 
 [System.Serializable]
-public class MonsterSprites {
+public struct MonsterSprites {
 	
 	public Sprite happyFace;
 	public Sprite boredFace;
 	public Sprite normalFace;
+
+	public Color monsterColor;
 }
 
 public class Monster : MonoBehaviour {
@@ -40,6 +42,13 @@ public class Monster : MonoBehaviour {
 	public void GenerateNewMonster()
 	{
 		sprites = MonsterManager.instance.GetMonster();
+		image.color = sprites.monsterColor;
+	}
+
+	public void RegenerateLastMonster()
+	{
+		sprites = MonsterManager.instance.GetLastMonster ();
+		image.color = sprites.monsterColor;
 	}
 
 	public void SetTempState(MonsterMood mood) {
@@ -75,9 +84,6 @@ public class Monster : MonoBehaviour {
 			break;
 		case MonsterMood.NEUTRAL:
 			image.sprite = sprites.normalFace;
-			break;
-		case MonsterMood.OVERIT:
-			image.sprite = null;
 			break;
 		}
 	}
