@@ -74,11 +74,11 @@ public class ConversationManager : MonoBehaviour {
 	}
 
 	public TopicList getRelatedTopics (TopicName topic) {
-		TopicList relatedTopics = topicManager.GetRelatedTopics ();
+		TopicList relatedTopics = topicManager.GetRelatedTopics (topic);
 		foreach (TopicName seenTopic in coveredTopics.list) {
-			relatedTopics.list.RemoveAll(seenTopic);
+			relatedTopics.list.Remove(topic);
 		}
-		for (i = 4 - relatedTopics.list.Count; i > 0; i--) {
+		for (int i = 4 - relatedTopics.list.Count; i > 0; i--) {
 			relatedTopics.list.Add(TopicName.NOTHING);
 		}
 		return relatedTopics;
