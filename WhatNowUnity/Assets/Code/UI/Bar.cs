@@ -70,7 +70,6 @@ public class Bar : MonoBehaviour {
 
 	void Update() {
 		if (ConversationManager.instance.isConversationRunning) {
-			Debug.Log("!");
 			if (setTarget) {
 				if (fill < target) {
 					fill = Mathf.Min (target, fill + lerpRate * Time.deltaTime);

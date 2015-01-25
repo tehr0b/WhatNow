@@ -119,6 +119,8 @@ public class ConversationManager : MonoBehaviour {
 	/// </summary>
 	void StartConversation(){
 		yourDate = new Person();
+		dateMonster.GenerateNewMonster();
+		dateMonster.SetPassiveState(MonsterMood.NEUTRAL);
 
 		currentTopic = TopicName.NOTHING;
 		//coveredTopics.list.Add (currentTopic);
@@ -185,7 +187,6 @@ public class ConversationManager : MonoBehaviour {
 		} else {
 			bar.exTopic = false;
 			slider.exTopic = false;
-
 		}
 
 		if (yourDate.Hates (currentTopic)) {

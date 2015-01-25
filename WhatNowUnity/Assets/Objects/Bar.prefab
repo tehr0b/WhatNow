@@ -140,7 +140,7 @@ MonoBehaviour:
   bar: {fileID: 11456754}
   hasColor: {r: 1, g: .921568632, b: .0156862754, a: 1}
   doesntColor: {r: .875, g: .853468478, b: .604779422, a: 1}
-  moveSpeed: 30
+  moveSpeed: 50
   acceleration: .25
   direction: 1
 --- !u!114 &11456750
@@ -200,9 +200,24 @@ MonoBehaviour:
   overBarRight: {fileID: 11456756}
   overBarLeft: {fileID: 11456752}
   label: {fileID: 11456758}
-  labelFlashTime: .5
+  labelFlashTime: 1.5
   flashHitColor: {r: 0, g: 1, b: 0, a: 1}
   flashMissColor: {r: 1, g: 0, b: 0, a: 1}
+  flashCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: .00384616852
+      value: 1.00240374
+      inSlope: .0215455908
+      outSlope: .0215455908
+      tangentMode: 0
+    - time: 1
+      value: .00624999963
+      inSlope: -2.94821811
+      outSlope: -2.94821811
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
   drainRate: .0500000007
   lerpRate: 1
   target: 0
@@ -243,7 +258,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
@@ -360,7 +375,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: -35.0999985}
+  m_AnchoredPosition: {x: 0, y: 79.5999985}
   m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22456756
@@ -394,8 +409,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 23.3700008}
-  m_SizeDelta: {x: 100, y: 20}
+  m_AnchoredPosition: {x: 0, y: 30}
+  m_SizeDelta: {x: 100, y: 40}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
