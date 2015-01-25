@@ -36,6 +36,14 @@ public class TopicManagerEditor : Editor {
 			EditorGUILayout.BeginHorizontal();
 			EditorGUILayout.LabelField(pair.Key.ToString());
 
+			Sprite curr = null;
+			if (manager.topicSprites.ContainsKey(pair.Key))
+				curr = manager.topicSprites[pair.Key];
+
+			manager.topicSprites[pair.Key] =
+				EditorGUILayout.ObjectField(curr,
+				                            typeof(Sprite), false) as Sprite;
+
 			while(pair.Value.Count > manager.maxLinksPerTopic)
 				pair.Value.RemoveAt(pair.Value.Count-1);
 			while (pair.Value.Count < manager.maxLinksPerTopic)
