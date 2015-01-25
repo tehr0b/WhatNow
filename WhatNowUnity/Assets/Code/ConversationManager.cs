@@ -230,6 +230,7 @@ public class ConversationManager : MonoBehaviour {
 
 	public void Miss() {
 		ChangeInterest (-Mathf.Abs(hitInterest) * ++missesThisTopic);
+		bar.SetRelativeTarget (hateHitPenalty);
 		bar.RunFlashMiss();
 	}
 

@@ -88,7 +88,7 @@ public class Bar : MonoBehaviour {
 				if (fill == target)
 					setTarget = false;
 			} else { //If not targetted, drain
-				fill = Mathf.Max (0, fill - drainRate * Time.deltaTime);
+				fill = Mathf.Max (0, fill - drain * Time.deltaTime);
 			}
 		}
 	}

@@ -59,7 +59,7 @@ public class BarSlider : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (ConversationManager.instance.isConversationRunning) {
-			transform.Translate (moveSpeed * direction * Time.deltaTime, 0, 0);
+			transform.Translate ((moveSpeed+accelBonus) * direction * Time.deltaTime, 0, 0);
 			if (Mathf.Abs (transform.localPosition.x) > limit) {
 				transform.localPosition = new Vector3 (
 					Mathf.Clamp (transform.localPosition.x,

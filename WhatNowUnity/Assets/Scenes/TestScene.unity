@@ -421,6 +421,10 @@ Prefab:
       propertyPath: exTopicDrainRate
       value: .075000003
       objectReference: {fileID: 0}
+    - target: {fileID: 11456754, guid: f4121fd2235cf824ca85715f95a45848, type: 2}
+      propertyPath: drainPerHit
+      value: .00999999978
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f4121fd2235cf824ca85715f95a45848, type: 2}
   m_RootGameObject: {fileID: 1845968863}
