@@ -63,6 +63,12 @@ public class Bar : MonoBehaviour {
 	[SerializeField]
 	bool setTarget = false;
 
+	[SerializeField]
+	string[] hitWords;
+
+	[SerializeField]
+	string[] missWords;
+
 	public bool exTopic{
 		set{
 			if (value) drainRate = exTopicDrainRate;
@@ -118,11 +124,11 @@ public class Bar : MonoBehaviour {
 	}
 
 	public Coroutine RunFlashHit() {
-		return RunFlashText ("Hit!", flashHitColor);
+		return RunFlashText (hitWords[Random.Range(0,hitWords.Length)], flashHitColor);
 	}
 
 	public Coroutine RunFlashMiss() {
-		return RunFlashText ("Miss!", flashMissColor);
+		return RunFlashText (missWords[Random.Range(0,missWords.Length)], flashMissColor);
 	}
 
 	public Coroutine RunFlashText(string text, Color color) {

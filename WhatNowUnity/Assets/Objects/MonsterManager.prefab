@@ -48,6 +48,22 @@ MonoBehaviour:
     boredFace: {fileID: 21300000, guid: cb649769c631b440d9821f8ef3f1e6b6, type: 3}
     normalFace: {fileID: 21300000, guid: ad355968d6b9a4b708e0632133a27ed6, type: 3}
     monsterColor: {r: 0, g: 0, b: 0, a: 0}
+  - happyFace: {fileID: 21300000, guid: 69319c5bf4fdd4c9d9d2791856858ea4, type: 3}
+    boredFace: {fileID: 21300000, guid: 49c6ea6b254c54503bcf5bd0fff0ad4c, type: 3}
+    normalFace: {fileID: 21300000, guid: 86a04e9436ebe4f8d94fa2de4fe3e56d, type: 3}
+    monsterColor: {r: 0, g: 0, b: 0, a: 0}
+  - happyFace: {fileID: 21300000, guid: 9c083e8594aee40108f081584732376c, type: 3}
+    boredFace: {fileID: 21300000, guid: 3b2366f4b8b2d4b729e7349f23dec852, type: 3}
+    normalFace: {fileID: 21300000, guid: e1b49d540853547a0ba85e77e7cc60a5, type: 3}
+    monsterColor: {r: 0, g: 0, b: 0, a: 0}
+  - happyFace: {fileID: 21300000, guid: dc2cbee7e863141e0acfaa92d5d6160b, type: 3}
+    boredFace: {fileID: 21300000, guid: c50f72a2aa5fd42c698f1f43909c9fae, type: 3}
+    normalFace: {fileID: 21300000, guid: 7f79640d17f55439b89dfd71ab5b5a7a, type: 3}
+    monsterColor: {r: 0, g: 0, b: 0, a: 0}
+  - happyFace: {fileID: 21300000, guid: c5e9bc1fcc7934d3faeb70e9c8ce2d85, type: 3}
+    boredFace: {fileID: 21300000, guid: c0da137c23e2a4d60ad07e24588bbf53, type: 3}
+    normalFace: {fileID: 21300000, guid: 32b220eba3a50443ba19095522a53f15, type: 3}
+    monsterColor: {r: 0, g: 0, b: 0, a: 0}
   colorMinR: .300000012
   colorMaxR: .899999976
   colorMinG: .300000012
