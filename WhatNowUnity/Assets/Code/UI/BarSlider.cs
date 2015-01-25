@@ -25,6 +25,12 @@ public class BarSlider : MonoBehaviour {
 		}
 	}
 
+	float moveAmount {
+		get {
+			return moveSpeed * 2 * limit * direction * Time.deltaTime;
+		}
+	}
+
 	float moveSpeed{
 		get{
 			return currSpeed + accelBonus;
@@ -33,13 +39,13 @@ public class BarSlider : MonoBehaviour {
 
 	float currSpeed;
 
-	[SerializeField] float normalMoveSpeed = 30;
+	[SerializeField] float normalMoveSpeed = .1f;
 
-	[SerializeField] float exTopicMoveSpeed = 50;
+	[SerializeField] float exTopicMoveSpeed = .15f;
 
 	float accelBonus = 0;
 
-	[SerializeField] float acceleration = .25f;
+	[SerializeField] float acceleration = .01f;
 
 	public int direction = 1;
 
@@ -59,7 +65,7 @@ public class BarSlider : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (ConversationManager.instance.isConversationRunning) {
-			transform.Translate ((moveSpeed+accelBonus) * direction * Time.deltaTime, 0, 0);
+			transform.Translate (moveAmount, 0, 0);
 			if (Mathf.Abs (transform.localPosition.x) > limit) {
 				transform.localPosition = new Vector3 (
 					Mathf.Clamp (transform.localPosition.x,

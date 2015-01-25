@@ -140,8 +140,9 @@ MonoBehaviour:
   bar: {fileID: 11456754}
   hasColor: {r: 1, g: .921568632, b: .0156862754, a: 1}
   doesntColor: {r: .875, g: .853468478, b: .604779422, a: 1}
-  moveSpeed: 50
-  acceleration: .25
+  normalMoveSpeed: .100000001
+  exTopicMoveSpeed: .150000006
+  acceleration: .00999999978
   direction: 1
 --- !u!114 &11456750
 MonoBehaviour:
@@ -218,7 +219,9 @@ MonoBehaviour:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-  drainRate: .0500000007
+  normalDrainRate: .0399999991
+  exTopicDrainRate: .075000003
+  drainPerHit: .00999999978
   lerpRate: 1
   target: 0
   setTarget: 0
