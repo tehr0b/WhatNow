@@ -10,17 +10,17 @@ public class Person {
 
 	List<TopicName> knownTopicsLiked = new List<TopicName>();
 
-	public Person(){
+	public Person(int interests, int hates){
 		TopicName topic;
-		while (topicsLiked.Count < ConversationManager.instance.dateInterestsCount) {
-			topic = TopicManager.instance.randomTopic;
+		while (topicsLiked.Count < interests) {
+			topic = TopicManager.randomTopic;
 			if (!topicsLiked.Contains(topic)) {
 				topicsLiked.Add(topic);
 			}
 		}
 		
-		while (topicsHated.Count < ConversationManager.instance.dateInterestsCount) {
-			topic = TopicManager.instance.randomTopic;
+		while (topicsHated.Count < hates) {
+			topic = TopicManager.randomTopic;
 			if (!topicsLiked.Contains(topic) && !topicsHated.Contains(topic)) {
 				topicsHated.Add(topic);
 			}
@@ -47,7 +47,7 @@ public class Person {
 		return topic == TopicName.NOTHING || topicsHated.Contains(topic); 
 	}
 
-	public void StoreBadMemories() {
+	public void BecomeBadMemories() {
 		topicsLiked = knownTopicsLiked;
 	}
 }

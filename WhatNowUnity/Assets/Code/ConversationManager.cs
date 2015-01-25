@@ -95,9 +95,12 @@ public class ConversationManager : MonoBehaviour {
 
 	int missesThisTopic = 0;
 
+
 	public int dateInterestsCount = 3;
 
 	public int dateHateCount = 3;
+
+	public int firstExInterestCount = 5;
 
 	Person yourDate {
 		get {
@@ -131,7 +134,7 @@ public class ConversationManager : MonoBehaviour {
 	}
 
 	void Start() {
-		yourExes.Add (new Person ());
+		yourExes.Add (new Person(firstExInterestCount, 0));
 		StartConversation();
 	}
 
@@ -152,7 +155,7 @@ public class ConversationManager : MonoBehaviour {
 		{
 			dateMonster.RegenerateLastMonster();
 		} else {
-			yourDate = new Person();
+			yourDate = new Person(dateInterestsCount, dateHateCount);
 			dateMonster.GenerateNewMonster();
 		}
 		dateMonster.SetPassiveState(MonsterMood.NEUTRAL);
