@@ -41,7 +41,6 @@ public class ConversationManager : MonoBehaviour {
 	[SerializeField]
 	float positiveInterestThreshold = 50;
 
-
 	float hitInterest;
 
 	[SerializeField]
@@ -74,6 +73,7 @@ public class ConversationManager : MonoBehaviour {
 	[SerializeField]
 	float topicLoveBonus = 3;
 
+
 	[SerializeField]
 	Bubble positiveBubble;
 
@@ -83,6 +83,12 @@ public class ConversationManager : MonoBehaviour {
 	[SerializeField]
 	Bubble exBubble;
 
+	[SerializeField]
+	Bubble winBubble;
+
+	[SerializeField]
+	Bubble loseBubble;
+
 	public int hitsThisTopic = 0;
 
 	int missesThisTopic = 0;
@@ -91,7 +97,7 @@ public class ConversationManager : MonoBehaviour {
 
 	public int dateHateCount = 3;
 
-	Person yourDate;
+	Person yourDate = null;
 	List<Person> yourExes = new List<Person>();
 
 	public bool hasConversationStarted = false;
@@ -104,7 +110,14 @@ public class ConversationManager : MonoBehaviour {
 	}
 
 	void Awake() {
+		if (instance != null) {
+			Debug.Log("Instance exists, destroying self");
+			Destroy(gameObject);
+			return;
+		}
+
 		instance = this;
+		DontDestroyOnLoad (gameObject);
 	}
 
 	void Start() {
@@ -121,7 +134,8 @@ public class ConversationManager : MonoBehaviour {
 	/// gives you your initial topic
 	/// </summary>
 	void StartConversation(){
-		yourDate = new Person();
+		if (yourDate == null)
+			yourDate = new Person();
 		dateMonster.GenerateNewMonster();
 		dateMonster.SetPassiveState(MonsterMood.NEUTRAL);
 
@@ -246,14 +260,32 @@ public class ConversationManager : MonoBehaviour {
 		if (currentInterest < minInterest) {
 			dateMonster.SetTempState(MonsterMood.OVERIT);
 			dateMonster.SetPassiveState(MonsterMood.OVERIT);
-			hasConversationEnded = true;
+			ProcessLose();
 		} else if (currentInterest < negativeInterestThreshold) {
 			dateMonster.SetPassiveState(MonsterMood.NEGATIVE);
+		} else if (currentInterest > maxInterest) { 
+			dateMonster.SetTempState(MonsterMood.HAPPY);
+			dateMonster.SetPassiveState(MonsterMood.HAPPY);
+			ProcessWin();
 		} else if (currentInterest > positiveInterestThreshold) {
 			dateMonster.SetPassiveState(MonsterMood.HAPPY);
 		} else {
 			dateMonster.SetPassiveState(MonsterMood.NEUTRAL);
 		}
+	}
+
+	public void ProcessLose() {
+		loseBubble.PermaShow();
+		hasConversationEnded = true;
+
+		yourDate.TrimLikes (coveredTopics);
+		yourExes.Add (yourDate);
+		yourDate = null;
+	}
+
+	public void ProcessWin() {
+		winBubble.PermaShow();
+		hasConversationEnded = true;
 	}
 
 	bool AnyExLoved(TopicName topic) {

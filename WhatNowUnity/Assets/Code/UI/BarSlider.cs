@@ -83,18 +83,25 @@ public class BarSlider : MonoBehaviour {
 				sliderImage.color = hasColor;
 			}
 
-			if (!hasHitThisPass && Input.GetKeyDown (KeyCode.Space)) {
-				///Debug.Log (transform.localPosition.x + ", " + limit + ", " + bar.fill);
-				if (Mathf.Abs (transform.localPosition.x) < limit * bar.fill) {
-					ConversationManager.instance.Hit ();
-				} else {
-					ConversationManager.instance.Miss ();
-				}
-				hasHitThisPass = true;
-				sliderImage.color = doesntColor;
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				TryToHit();
 			}
 
 			accelBonus += acceleration * Time.deltaTime;
+		}
+	}
+
+	public void TryToHit() {
+		if (ConversationManager.instance.isConversationRunning
+						&& !hasHitThisPass) {
+			///Debug.Log (transform.localPosition.x + ", " + limit + ", " + bar.fill);
+			if (Mathf.Abs (transform.localPosition.x) < limit * bar.fill) {
+				ConversationManager.instance.Hit ();
+			} else {
+				ConversationManager.instance.Miss ();
+			}
+			hasHitThisPass = true;
+			sliderImage.color = doesntColor;
 		}
 	}
 		

@@ -39,25 +39,42 @@ public class Bubble : MonoBehaviour {
 		alpha = 0;
 	}
 
-	public void ShowTopic(TopicName topic) {
-		icon.topic = topic;
+	public void PermaShow() {
+		StartCoroutine (FadeIn ());
+	}
 
+	public void Show() {
 		if (currFade != null)
 			StopCoroutine (currFade);	
-
-		currFade = FadeInOutInOutInOutInOutInOut ();
+		
+		currFade = FadeInFadeOut ();
 		StartCoroutine (currFade);
 	}
 
-	IEnumerator FadeInOutInOutInOutInOutInOut() {
+	public void ShowTopic(TopicName topic) {
+		icon.topic = topic;
+
+		Show();
+	}
+
+	IEnumerator FadeInFadeOut() {
+		yield return StartCoroutine (FadeIn ());
+		yield return new WaitForSeconds(showTime);
+		yield return StartCoroutine (FadeOut ());
+
+	}
+
+	IEnumerator FadeIn() {
 		float currTime = 0;
 		while (currTime < fadeTime){
 			currTime += Time.deltaTime;
 			alpha = currTime/fadeTime;
 			yield return null;
 		}
-		yield return new WaitForSeconds(showTime);
-		currTime = 0;
+	}
+
+	IEnumerator FadeOut() {
+		float currTime = 0;
 		while (currTime < fadeTime){
 			currTime += Time.deltaTime;
 			alpha = 1-currTime/fadeTime;
