@@ -76,6 +76,8 @@ public class ConversationManager : MonoBehaviour {
 	/// gives you your initial topic
 	/// </summary>
 	void StartConversation(){
+		dateMonster.GenerateNewMonster();
+		dateMonster.SetPassiveState(MonsterMood.NEUTRAL);
 		currentTopic = TopicManager.instance.GetStartingTopic ();
 		coveredTopics.list.Add (currentTopic);
 

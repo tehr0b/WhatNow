@@ -10,11 +10,16 @@ public enum MonsterMood {
 	OVERIT
 }
 
-public class Monster : MonoBehaviour {
-
+[System.Serializable]
+public class MonsterSprites {
+	
 	public Sprite happyFace;
 	public Sprite boredFace;
 	public Sprite normalFace;
+}
+
+public class Monster : MonoBehaviour {
+	public MonsterSprites sprites;
 
 	public Image image;
 
@@ -28,7 +33,13 @@ public class Monster : MonoBehaviour {
 	public void Awake ()
 	{
 		image = GetComponent<Image>();
-		image.sprite = normalFace;
+		//GenerateNewMonster();
+		image.sprite = sprites.normalFace;
+	}
+
+	public void GenerateNewMonster()
+	{
+		sprites = MonsterManager.instance.GetMonster();
 	}
 
 	public void SetTempState(MonsterMood mood) {
@@ -56,13 +67,13 @@ public class Monster : MonoBehaviour {
 	void SetState(MonsterMood mood){
 		switch (mood) {
 		case MonsterMood.HAPPY:
-			image.sprite = happyFace;
+			image.sprite = sprites.happyFace;
 			break;
 		case MonsterMood.NEGATIVE:
-			image.sprite = boredFace;
+			image.sprite = sprites.boredFace;
 			break;
 		case MonsterMood.NEUTRAL:
-			image.sprite = normalFace;
+			image.sprite = sprites.normalFace;
 			break;
 		case MonsterMood.OVERIT:
 			image.sprite = null;
