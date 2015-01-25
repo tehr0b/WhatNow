@@ -51,7 +51,7 @@ public enum TopicName
 	Smoking,
 	Books,
 	Recycling,
-	Gender,
+	Humans,
 	MAX //Not an actual topic, just used for iteration count
 }
 
@@ -66,7 +66,7 @@ public class TopicSet {
 		Topic cars = new Topic (TopicName.Cars);
 		Topic motorcycles = new Topic (TopicName.Motorcycles);
 		Topic clothes = new Topic (TopicName.Clothes);
-		Topic marklar = new Topic (TopicName.Gender);
+		Topic marklar = new Topic (TopicName.AtomicPower);
 		Topic microscope = new Topic (TopicName.Microscope);
 		Topic milk = new Topic (TopicName.Milk);
 
