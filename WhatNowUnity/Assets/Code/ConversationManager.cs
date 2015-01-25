@@ -16,13 +16,20 @@ public class ConversationManager : MonoBehaviour {
 	[SerializeField]
 	Bar bar;
 
+	[SerializeField]
 	float currentInterest = 0;
 
 	[SerializeField]
-	float maxInterest = 500;
+	float maxInterest = 100;
 
 	[SerializeField]
 	float minInterest = -100;
+
+	[SerializeField]
+	float negativeInterestThreshold = -50;
+
+	[SerializeField]
+	float positiveInterestThreshold = 50;
 
 	[SerializeField]
 	float hitInterest = 10;
@@ -86,13 +93,30 @@ public class ConversationManager : MonoBehaviour {
 	}
 
 	public void Hit() {
-		//TODO: Make bad topics give less interest?
-		currentInterest += bar.fill * hitInterest;
+		ChangeInterest (bar.fill * hitInterest);
 		bar.RunFlashHit();
 	}
 
 	public void Miss() {
-		currentInterest -= hitInterest;
+		ChangeInterest (-hitInterest);
 		bar.RunFlashMiss();
+	}
+
+	public void ChangeInterest(float interestChange){
+		currentInterest += interestChange;
+
+		if (interestChange < 0) {
+			//TODO: Temp show negative reaction
+		} else if (interestChange > 0) {
+			//TODO: Temp show positive reaction
+		}
+
+		if (currentInterest < negativeInterestThreshold) {
+			//TODO: Set active mood to negative
+		} else if (currentInterest > positiveInterestThreshold) {
+			//TODO: Set active mood to positive
+		} else {
+			//TODO: Set active mood to neutral
+		}
 	}
 }
