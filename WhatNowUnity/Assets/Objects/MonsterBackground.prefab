@@ -10,6 +10,7 @@ GameObject:
   - 224: {fileID: 22438772}
   - 222: {fileID: 22238772}
   - 114: {fileID: 11438772}
+  - 114: {fileID: 11455918}
   m_Layer: 5
   m_Name: Monster
   m_TagString: Untagged
@@ -59,6 +60,7 @@ GameObject:
   - 224: {fileID: 22441908}
   - 222: {fileID: 22241908}
   - 114: {fileID: 11441908}
+  - 114: {fileID: 11455920}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -79,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: db3d935de96534f19a1450fdb092228d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3dceb7de59a3c41fca50c7199d190109, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -129,6 +131,44 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11455918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b28e73ee12c4c2dbd7529f99bc91b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+    happyFace: {fileID: 0}
+    boredFace: {fileID: 0}
+    normalFace: {fileID: 0}
+    monsterColor: {r: 0, g: 0, b: 0, a: 0}
+  image: {fileID: 11438772}
+  tempStateTime: 3
+  passiveState: 0
+--- !u!114 &11455920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19915b3312d77d448ada5437bff9dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 11441908}
+  possibleBackgrounds:
+  - {fileID: 21300000, guid: 974946937dcd64087a0c96f163f64df5, type: 3}
+  - {fileID: 21300000, guid: 41275f4600e944d44a0f3e23fed4c15e, type: 3}
+  - {fileID: 21300000, guid: 53cefecc6f2c941bb89769f1a42f00b8, type: 3}
+  - {fileID: 21300000, guid: c075c074f169b494184e938e951953c7, type: 3}
+  - {fileID: 21300000, guid: ddca45a4429a944a7b24f552022d88e6, type: 3}
+  - {fileID: 21300000, guid: e4ed5d8c763314048979e5f3df899176, type: 3}
 --- !u!222 &22238772
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -161,7 +201,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 1, y: -239}
+  m_AnchoredPosition: {x: 1, y: -250.199997}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22438776
@@ -181,7 +221,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 298}
+  m_AnchoredPosition: {x: -2, y: 302.600006}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22438780
@@ -198,7 +238,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -1, y: -428}
+  m_AnchoredPosition: {x: -1, y: -435.299988}
   m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22441908
