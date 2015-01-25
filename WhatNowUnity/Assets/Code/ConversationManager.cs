@@ -8,6 +8,9 @@ public class ConversationManager : MonoBehaviour {
 	public static ConversationManager instance;
 
 	[SerializeField]
+	Monster dateMonster;
+
+	[SerializeField]
 	TopicIcon[] topicOptions;
 
 	[SerializeField]
@@ -45,6 +48,8 @@ public class ConversationManager : MonoBehaviour {
 
 	Person yourDate;
 	List<Person> yourExes;
+
+	public bool isConversationRunning = true;
 
 	void Awake() {
 		instance = this;
@@ -106,17 +111,20 @@ public class ConversationManager : MonoBehaviour {
 		currentInterest += interestChange;
 
 		if (interestChange < 0) {
-			//TODO: Temp show negative reaction
+			dateMonster.SetTempState(MonsterMood.NEGATIVE);
 		} else if (interestChange > 0) {
-			//TODO: Temp show positive reaction
+			dateMonster.SetTempState(MonsterMood.HAPPY);
 		}
 
-		if (currentInterest < negativeInterestThreshold) {
-			//TODO: Set active mood to negative
+		if (currentInterest < minInterest) {
+			dateMonster.SetPassiveState(MonsterMood.OVERIT);
+			isConversationRunning = false;
+		} else if (currentInterest < negativeInterestThreshold) {
+			dateMonster.SetPassiveState(MonsterMood.NEGATIVE);
 		} else if (currentInterest > positiveInterestThreshold) {
-			//TODO: Set active mood to positive
+			dateMonster.SetPassiveState(MonsterMood.HAPPY);
 		} else {
-			//TODO: Set active mood to neutral
+			dateMonster.SetPassiveState(MonsterMood.NEUTRAL);
 		}
 	}
 }

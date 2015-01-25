@@ -26,6 +26,9 @@ public class Bar : MonoBehaviour {
 	Color flashMissColor = Color.red;
 
 	[SerializeField]
+	AnimationCurve flashCurve;
+
+	[SerializeField]
 	float drainRate = .2f;
 
 	[SerializeField]
@@ -54,16 +57,18 @@ public class Bar : MonoBehaviour {
 	}
 
 	void Update() {
-
-		if (setTarget) {
-			if (fill < target){
-				fill = Mathf.Min(target, fill + lerpRate * Time.deltaTime);
-			} else {
-				fill = Mathf.Max(target, fill - lerpRate * Time.deltaTime);
+		if (ConversationManager.instance.isConversationRunning) {
+			if (setTarget) {
+				if (fill < target) {
+					fill = Mathf.Min (target, fill + lerpRate * Time.deltaTime);
+				} else {
+					fill = Mathf.Max (target, fill - lerpRate * Time.deltaTime);
+				}
+				if (fill == target)
+					setTarget = false;
+			} else { //If not targetted, drain
+				fill = Mathf.Max (0, fill - drainRate * Time.deltaTime);
 			}
-			if (fill == target) setTarget = false;
-		} else { //If not targetted, drain
-			fill = Mathf.Max (0, fill - drainRate * Time.deltaTime);
 		}
 	}
 
@@ -101,7 +106,7 @@ public class Bar : MonoBehaviour {
 		while (currTime < time) {
 			yield return null;
 			currTime += Time.deltaTime;
-			label.color = new Color(color.r, color.g, color.b, 1 - currTime/time);
+			label.color = new Color(color.r, color.g, color.b, flashCurve.Evaluate(currTime/time));
 		}
 	}
 

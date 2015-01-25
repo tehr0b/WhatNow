@@ -6,7 +6,7 @@ public class ButtonTopicIcon : MonoBehaviour {
 	public TopicIcon topicIcon;
 
 	public void Click(){
-		if (!topicIcon.animating) {
+		if (!topicIcon.animating && ConversationManager.instance.isConversationRunning) {
 			topicIcon = ConversationManager.instance.ChangeTopic (this);
 		}
 	}
