@@ -48,16 +48,29 @@ MonoBehaviour:
   - {fileID: 0}
   currentTopicIcon: {fileID: 0}
   bar: {fileID: 0}
+  slider: {fileID: 0}
   currentInterest: 0
   maxInterest: 100
-  minInterest: -100
-  negativeInterestThreshold: -50
+  minInterest: -50
+  negativeInterestThreshold: -25
   positiveInterestThreshold: 50
-  hitInterest: 10
+  baseHitInterest: 10
+  dateLovesHitInterest: 15
+  dateHatesHitInterest: -5
+  baseHitBonus: .0500000007
+  loveHitBonus: .075000003
+  hateHitPenalty: -.0500000007
   topicChangeBonus: .100000001
   topicHatePenalty: -1
-  topicLoveBonus: 3
-  isConversationRunning: 1
+  topicLoveBonus: 2
+  positiveBubble: {fileID: 0}
+  negativeBubble: {fileID: 0}
+  exBubble: {fileID: 0}
+  hitsThisTopic: 0
+  dateInterestsCount: 3
+  dateHateCount: 3
+  hasConversationStarted: 0
+  hasConversationEnded: 0
 --- !u!114 &11467668
 MonoBehaviour:
   m_ObjectHideFlags: 1
