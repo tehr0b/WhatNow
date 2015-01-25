@@ -8,15 +8,15 @@ public class TopicManagerEditor : Editor {
 
 	void CheckLinkDictionary(TopicManager manager){
 		if (manager.topicLinks == null) {
-			manager.topicLinks = new Dictionary<TopicName, List<TopicName>>();
+			manager.topicLinks = new List<TopicList>();
 		}
 
-		if (manager.topicLinks.Count < (int)TopicName.MAX-1) {
-			for (int i = 1; i < (int)TopicName.MAX; i++) {
-				if (!manager.topicLinks.ContainsKey((TopicName)i)){
-					manager.topicLinks.Add((TopicName)i, new List<TopicName>());
-				}
-			}
+		while (manager.topicLinks.Count < (int)TopicName.MAX) {
+			manager.topicLinks.Add(new TopicList());
+		}
+
+		while (manager.topicSprites.Count < (int)TopicName.MAX) {
+			manager.topicSprites.Add (null);
 		}
 	}
 
@@ -32,28 +32,29 @@ public class TopicManagerEditor : Editor {
 
 		EditorGUILayout.LabelField ("Links");
 
-		foreach (var pair in manager.topicLinks) {
+		TopicName topic;
+		for (int i = 1; i < (int)TopicName.MAX; i++) {
 			EditorGUILayout.BeginHorizontal();
-			EditorGUILayout.LabelField(pair.Key.ToString());
 
-			Sprite curr = null;
-			if (manager.topicSprites.ContainsKey(pair.Key))
-				curr = manager.topicSprites[pair.Key];
+			topic = (TopicName)i;
 
-			manager.topicSprites[pair.Key] =
-				EditorGUILayout.ObjectField(curr,
-				                            typeof(Sprite), false) as Sprite;
+			EditorGUILayout.LabelField(topic.ToString(), GUILayout.Width(100));
 
-			while(pair.Value.Count > manager.maxLinksPerTopic)
-				pair.Value.RemoveAt(pair.Value.Count-1);
-			while (pair.Value.Count < manager.maxLinksPerTopic)
-				pair.Value.Add(TopicName.NOTHING);
+			manager.topicSprites[i] = EditorGUILayout.ObjectField(
+				manager.topicSprites[i], typeof(Sprite), false) as Sprite;
 
-			for (int i = 0; i < pair.Value.Count; i++) {
-				pair.Value[i] = (TopicName)EditorGUILayout.EnumPopup(pair.Value[i]);
+			while(manager.topicLinks[i].list.Count > manager.maxLinksPerTopic)
+				manager.topicLinks[i].list.RemoveAt(manager.topicLinks[i].list.Count-1);
+			while(manager.topicLinks[i].list.Count < manager.maxLinksPerTopic)
+				manager.topicLinks[i].list.Add(TopicName.NOTHING);
+
+			for (int j = 0; j < manager.topicLinks[i].list.Count; j++) {
+				manager.topicLinks[i].list[j] = (TopicName)EditorGUILayout.EnumPopup(manager.topicLinks[i].list[j]);
 			}
+
 			EditorGUILayout.EndHorizontal();
 		}
+
 
 		EditorGUILayout.EndVertical ();
 	}
