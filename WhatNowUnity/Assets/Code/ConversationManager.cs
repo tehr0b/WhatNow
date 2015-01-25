@@ -7,7 +7,10 @@ public class ConversationManager : MonoBehaviour {
 
 	public static ConversationManager instance;
 
+	[SerializeField]
 	TopicIcon[] topicOptions;
+
+	[SerializeField]
 	TopicIcon currentTopic;
 
 	float currentInterest = 0;
@@ -42,8 +45,26 @@ public class ConversationManager : MonoBehaviour {
 	/// the specified ButtonTopicIcon
 	/// </summary>
 	/// <param name="buttonTopicIcon">Button topic icon.</param>
-	public void ChangeTopic(ButtonTopicIcon buttonTopicIcon){
+	public TopicIcon ChangeTopic(ButtonTopicIcon buttonTopicIcon){
+		TopicIcon oldCurrent = currentTopic;
 
+		//TODO: Pick new topics based on new topic
+
+		oldCurrent.RunChangeToNextTopic (oldCurrent.topic, buttonTopicIcon.topicIcon.transform.localPosition);
+		
+		buttonTopicIcon.topicIcon.RunBecomeMainTopic ();
+		currentTopic = buttonTopicIcon.topicIcon;
+
+		for (int i = 0; i < topicOptions.Length; i++) {
+			if (topicOptions[i] == buttonTopicIcon.topicIcon) {
+				topicOptions[i] = oldCurrent;
+			} else {
+				//TODO: Change this to its next topic
+				topicOptions[i].RunChangeToNextTopic(topicOptions[i].topic);
+			}
+		}
+
+		return oldCurrent;
 	}
 
 

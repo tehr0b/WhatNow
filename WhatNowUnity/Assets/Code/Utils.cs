@@ -14,3 +14,8 @@ public static class Utils {
 		return newList;
 	}
 }
+
+[System.Serializable]
+public class TopicList {
+	public List<TopicName> list = new List<TopicName>();
+}

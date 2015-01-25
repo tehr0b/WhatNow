@@ -8,15 +8,19 @@ public class TopicManager : MonoBehaviour
 
 	public int maxLinksPerTopic;
 
-	public Dictionary<TopicName, List<TopicName>> topicLinks = new Dictionary<TopicName, List<TopicName>>();
+	public List<TopicList> topicLinks = new List<TopicList>();
 
-	public Dictionary<TopicName, Sprite> topicSprites = new Dictionary<TopicName, Sprite>();
+	//public Dictionary<TopicName, List<TopicName>> topicLinks = new Dictionary<TopicName, List<TopicName>>();
+
+	//public Dictionary<TopicName, Sprite> topicSprites = new Dictionary<TopicName, Sprite>();
+
+	public List<Sprite> topicSprites = new List<Sprite>();
 
 	void Awake(){
 		instance = this;
 	}
 	
 	public Sprite SpriteForTopic(TopicName topic){
-		return topicSprites [topic];
+		return topicSprites [(int)topic];
 	}
 }
