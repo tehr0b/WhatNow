@@ -13,13 +13,28 @@ public class ConversationManager : MonoBehaviour {
 	[SerializeField]
 	TopicIcon currentTopic;
 
+	[SerializeField]
+	Bar bar;
+
 	float currentInterest = 0;
 
 	[SerializeField]
-	float maxInterest = 100;
+	float maxInterest = 500;
 
 	[SerializeField]
 	float minInterest = -100;
+
+	[SerializeField]
+	float hitInterest = 10;
+
+	[SerializeField]
+	float topicChangeBonus = .1f;
+
+	[SerializeField]
+	float topicHatePenalty = -1;
+
+	[SerializeField]
+	float topicLoveBonus = 3;
 
 	Person yourDate;
 	List<Person> yourExes;
@@ -64,9 +79,20 @@ public class ConversationManager : MonoBehaviour {
 			}
 		}
 
+		//TODO: Make hating/loving the topic influence it
+		bar.SetRelativeTarget (topicChangeBonus);
+
 		return oldCurrent;
 	}
 
+	public void Hit() {
+		//TODO: Make bad topics give less interest?
+		currentInterest += bar.fill * hitInterest;
+		bar.RunFlashHit();
+	}
 
-
+	public void Miss() {
+		currentInterest -= hitInterest;
+		bar.RunFlashMiss();
+	}
 }

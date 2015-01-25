@@ -13,16 +13,27 @@ public class BarSlider : MonoBehaviour {
 	[SerializeField]
 	Bar bar;
 
+	[SerializeField]
+	Color hasColor = Color.yellow;
+
+	[SerializeField]
+	Color doesntColor = Color.yellow;
+
 	float limit { 
 		get {
 			return barImage.rectTransform.rect.width/2;
 		}
 	}
 
-	public float moveSpeed;
+	[SerializeField] float moveSpeed = 30;
+	[SerializeField] float acceleration = .25f;
 	public int direction = 1;
 
 	bool hasHitThisPass = false;
+
+	void Start() {
+		transform.localPosition = new Vector3 (-limit, transform.localPosition.y, transform.localPosition.z);
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -37,19 +48,25 @@ public class BarSlider : MonoBehaviour {
 			direction *= -1;
 
 			if (!hasHitThisPass) {
-
+				ConversationManager.instance.Miss();
 			}
+
+			hasHitThisPass = false;
+			sliderImage.color = hasColor;
 		}
 
 		if (!hasHitThisPass && Input.GetKeyDown (KeyCode.Space)) {
 			Debug.Log(transform.localPosition.x + ", " + limit + ", " + bar.fill);
 			if (Mathf.Abs(transform.localPosition.x) < limit * bar.fill) {
-				Debug.Log("Hit!");
+				ConversationManager.instance.Hit();
 			} else {
-				Debug.Log("Miss!");
+				ConversationManager.instance.Miss();
 			}
+			hasHitThisPass = true;
+			sliderImage.color = doesntColor;
 		}
-	}
 
+		moveSpeed += acceleration * Time.deltaTime;
+	}
 		
 }
