@@ -16,7 +16,6 @@ public class Monster : MonoBehaviour {
 	public Sprite boredFace;
 	public Sprite normalFace;
 
-	public float dateSatisfaction = 1.0f;
 	public Image image;
 
 	[SerializeField] float tempStateTime = 3f;
